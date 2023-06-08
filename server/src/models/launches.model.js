@@ -37,13 +37,15 @@ function getAllLaunches() {
 
 function addNewLaunch(launch) {
 	latestFlightNumber++;
-	launches.set(latestFlightNumber, {
-		...launch,
-		customers: ['ZTM', 'NASA'],
-		upcoming: true,
-		success: true,
-		flightNumber: latestFlightNumber,
-	});
+	launches.set(
+		latestFlightNumber,
+		Object.assign(launch, {
+			success: true,
+			upcoming: true,
+			customers: ['Zero to Mastery', 'NASA'],
+			flightNumber: latestFlightNumber,
+		})
+	);
 }
 
 function abortLaunchById(launchId) {
