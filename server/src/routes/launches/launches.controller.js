@@ -43,20 +43,8 @@ function httpAbortLaunch(req, res) {
 		});
 	}
 
-	// check if the launch has already been launched
-	// TODO: fix this, we don't have existing launch now
-	const aborted = existsLaunch.upcoming;
-	if (!aborted) {
-		return res.status(400).json({
-			error: 'Launch already aborted',
-		});
-	}
-
-	// abort the launch
-	abortLaunchById(launchId);
-	return res.status(200).json({
-		ok: true,
-	});
+	const aborted = abortLaunchById(launchId);
+	return res.status(200).json(aborted);
 }
 
 module.exports = {
